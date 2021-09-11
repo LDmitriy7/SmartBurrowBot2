@@ -25,10 +25,11 @@ class Users:
     users = env['Users']
 
     ADMINS_IDS = users['admins_ids']
+    OWNER_USERNAME = users['owner_username']
 
 
 class Log:
     log = env['Log']
 
-    FILE = log.get('file', '.log')
+    FILE = log.get('file')
     LEVEL = log.get('level', 30)
