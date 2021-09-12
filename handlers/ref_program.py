@@ -7,11 +7,6 @@ import texts
 from loader import dp
 
 
-@dp.message_handler(button=kb.MainMenu.GUIDE)
-async def send_guide(msg: types.Message):
-    await msg.answer(texts.guide, disable_web_page_preview=True)
-
-
 @dp.message_handler(text=kb.MainMenu.REF_PROGRAM)
 async def send_ref_program_info(msg: types.Message):
     user = models.User.objects(user_id=msg.from_user.id).first()

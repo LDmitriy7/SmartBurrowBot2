@@ -29,3 +29,22 @@ class User(me.Document):
     ref_income: int = me.IntField(default=0)
     ref_percent: int = me.IntField(default=config.RefProgram.PERCENT)
     ref_term: int = me.IntField(default=config.RefProgram.TERM)
+
+
+class File(me.EmbeddedDocument):
+    file_type: str = me.StringField()
+    file_id: str = me.StringField()
+
+
+class Order(me.Document):
+    send_to: str = me.StringField()
+    worker_id: int = me.IntField()
+    require_approving: bool = me.BooleanField(default=False)
+
+    work_type: str = me.StringField()
+    subject: str = me.StringField()
+    date: str = me.DateField()
+    description: str = me.StringField()
+    price: int = me.IntField()
+    note: str = me.StringField()
+    files: list[File] = me.ListField(File)
