@@ -1,6 +1,6 @@
 from aiogram.types import InlineKeyboardMarkup
 
-from .tools import InlineKeyboardButton
+from utils.keyboards import InlineKeyboardButton
 
 
 class WorkTypes(InlineKeyboardMarkup):

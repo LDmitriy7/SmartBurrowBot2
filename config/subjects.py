@@ -218,6 +218,4 @@ SUBJECTS_BY_CATEGORY = {
                          'Поднятие уникальности текста', 'Рерайтинг'},
 }
 
-ALL_SUBJECTS = set()
-for category_subjects in SUBJECTS_BY_CATEGORY.values():
-    ALL_SUBJECTS.update(category_subjects)
+ALL_SUBJECTS = set(s for subjects in SUBJECTS_BY_CATEGORY.values() for s in subjects)

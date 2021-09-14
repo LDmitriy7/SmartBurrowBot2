@@ -4,7 +4,7 @@ import api
 import keyboards as kb
 import models
 import states
-from api.utils import StorageProxy
+from utils import StorageProxy
 from loader import dp
 from models.constants import SendTo
 

@@ -4,8 +4,8 @@ import api
 import keyboards as kb
 import models
 import states
-from api.utils import StorageProxy
 from loader import dp
+from utils import StorageProxy
 
 
 @dp.callback_query_handler(button=kb.WorkTypes.BUTTONS, state=states.CreateOrder.work_type)
