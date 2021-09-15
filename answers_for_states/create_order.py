@@ -22,10 +22,10 @@ async def ask_subject():
     await bot.send_message(chat.id, texts.ask_subject, reply_markup=kb.SubjectsSearch())
 
 
-async def ask_date():
+async def ask_until_date():
     chat = types.Chat.get_current()
     reply_markup = kb.Calendar(min_date=date.today(), current_date=date.today())
-    await bot.send_message(chat.id, texts.ask_date, reply_markup=reply_markup)
+    await bot.send_message(chat.id, texts.ask_until_date, reply_markup=reply_markup)
 
 
 async def ask_description():
@@ -60,6 +60,5 @@ async def show_preview():
         await bot.send_message(chat.id, texts.ask_to_save_personal_order)
 
     post_text = api.get_order_post_text(order, with_note=True)
-    await bot.send_message(chat.id, post_text, reply_markup=None)
-    # await bot.send_message(chat.id, post_text, reply_markup=kb.ConfirmOrder())
-    # await funcs.send_files(post_data.files)
+    await bot.send_message(chat.id, post_text, reply_markup=kb.SendOrder())
+    await api.send_order_files(order.files)

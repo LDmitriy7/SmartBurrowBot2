@@ -1,4 +1,5 @@
-from datetime import date
+from __future__ import annotations
+
 from datetime import datetime
 
 import mongoengine as me

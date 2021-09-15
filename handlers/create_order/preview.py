@@ -1,34 +1,49 @@
+import asyncio
+
 from aiogram import types
 from aiogram.utils.exceptions import TelegramAPIError
 
 import api
-from models import constants
 import keyboards as kb
-from loader import dp
+import models
 import states
 import texts
-import asyncio
+from loader import dp
+from models import constants
+from utils import StorageProxy
 
 main_state = states.CreateOrder.preview
 
 
-@dp.message_handler(text=kb.confirm_project.SEND, state=States.confirm, sdata={'send_to': constants.SendTo.CHANNEL})
-async def send_project_to_channel(user_id: int, sdata: dict):
-    project = await funcs.save_project()
+@dp.message_handler(text=kb.SendOrder.SEND, state=main_state, sdata={'send_to': constants.SendTo.CHANNEL})
+async def send_order(user_id: int, sdata: dict):
+    async with StorageProxy(models.Order) as order:
+        order.save()
 
-    if sdata.get('require_approving'):
-        await funcs.send_post_to_admin(user_id, project.id, project.data)
-        return UpdateData(), QuestText('Твой заказ будет опубликован после проверки админом', kb.main)
+    if order.send_to == constants.SendTo.CHANNEL:
+        if order.require_approving:
+            await send_order_to_admin()
+        else:
+            await send_order_to_channel()
+    elif order.send_to == constants.SendTo.WORKER:
+        await send_order_to_worker()
     else:
-        post = await funcs.send_post(project.id, project.data)
-        asyncio.create_task(funcs.broadcast_order(project.id, project.data))
-        return UpdateData(), QuestText(texts.create_project.show_preview.format(post_url=post.url), kb.main)
+        await send_offer_keyboard()
 
 
-@dp.message_handler(text=kb.confirm_project.SEND, state=States.confirm, sdata={'send_to': constants.SendTo.WORKER})
-async def send_project_to_worker(msg: types.Message, user_name):
-    project = await funcs.save_project()
-    await msg.answer('Идет отправка...', reply_markup=kb.main)
+async def send_order_to_admin(user_id: int, sdata: dict):
+    await api.send_post_to_admin(user_id, project.id, project.data)
+    return UpdateData(), QuestText('Твой заказ будет опубликован после проверки админом', kb.main)
+
+
+async def send_order_to_channel():
+    post = await api.send_post(project.id, project.data)
+    asyncio.create_task(funcs.broadcast_order(project.id, project.data))
+    return UpdateData(), QuestText(texts.create_project.show_preview.format(post_url=post.url), kb.main)
+
+
+async def send_order_to_worker(msg: types.Message, user_name):
+    await msg.answer('Идет отправка...', reply_markup=kb.MainMenu())
     chats = await funcs.create_and_save_groups(project.client_id, project.worker_id, project.id)
 
     try:
@@ -41,7 +56,6 @@ async def send_project_to_worker(msg: types.Message, user_name):
     return UpdateData(), text
 
 
-@dp.message_handler(text=kb.confirm_project.SEND, state=States.confirm, sdata={'send_to': None})
 async def send_offer_keyboard(msg: types.Message):
     project = await funcs.save_project()
     await msg.answer(texts.create_project.pre_ask_worker, reply_markup=kb.main)
@@ -53,3 +67,4 @@ async def send_offer_keyboard(msg: types.Message):
 async def send_offer_to_worker(iquery: types.InlineQuery, suffix: str):
     article = funcs.make_offer_project_article(suffix)
     await iquery.answer([article], cache_time=0, is_personal=True)
+#

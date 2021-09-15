@@ -14,3 +14,11 @@ class OrderStatus(Helper):
     ACTIVE = Item()
     IN_PROGRESS = Item()
     COMPLETED = Item()
+
+
+class Fallbacks(Helper):
+    BACK = 'Назад'
+    CANCEL = 'Отменить'
+    READY = 'Готово'
+    RESET = 'Сбросить'
+    MISS = 'Пропустить'

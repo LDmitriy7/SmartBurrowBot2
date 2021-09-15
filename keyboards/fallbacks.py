@@ -1,9 +1,11 @@
 from aiogram.types import ReplyKeyboardMarkup
 
+from models import constants
+
 
 class CancelBack(ReplyKeyboardMarkup):
-    BACK = 'Назад'
-    CANCEL = 'Отменить'
+    BACK = constants.Fallbacks.BACK
+    CANCEL = constants.Fallbacks.CANCEL
 
     def __init__(self):
         super().__init__(resize_keyboard=True, row_width=2)
@@ -14,9 +16,9 @@ class CancelBack(ReplyKeyboardMarkup):
 
 
 class MissBack(ReplyKeyboardMarkup):
-    MISS = 'Пропустить'
-    BACK = 'Назад'
-    CANCEL = 'Отменить'
+    MISS = constants.Fallbacks.MISS
+    BACK = constants.Fallbacks.BACK
+    CANCEL = constants.Fallbacks.CANCEL
 
     def __init__(self):
         super().__init__(resize_keyboard=True, row_width=2)
@@ -29,10 +31,10 @@ class MissBack(ReplyKeyboardMarkup):
 
 
 class ReadyBack(ReplyKeyboardMarkup):
-    READY = 'Готово'
-    RESET = 'Сбросить'
-    BACK = 'Назад'
-    CANCEL = 'Отменить'
+    READY = constants.Fallbacks.READY
+    RESET = constants.Fallbacks.RESET
+    BACK = constants.Fallbacks.BACK
+    CANCEL = constants.Fallbacks.CANCEL
 
     def __init__(self):
         super().__init__(resize_keyboard=True, row_width=2)
