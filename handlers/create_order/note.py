@@ -20,5 +20,5 @@ async def process_note(msg: types.Message):
     async with StorageProxy(models.Order) as order:
         order.note = note
 
-    # await states.CreateOrder.next()
+    await states.CreateOrder.next()
     await api.answer_for_state()

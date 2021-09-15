@@ -26,3 +26,18 @@ class MissBack(ReplyKeyboardMarkup):
         self.add(
             self.BACK, self.CANCEL,
         )
+
+
+class ReadyBack(ReplyKeyboardMarkup):
+    READY = 'Готово'
+    RESET = 'Сбросить'
+    BACK = 'Назад'
+    CANCEL = 'Отменить'
+
+    def __init__(self):
+        super().__init__(resize_keyboard=True, row_width=2)
+
+        self.add(
+            self.READY, self.RESET,
+            self.BACK, self.CANCEL,
+        )

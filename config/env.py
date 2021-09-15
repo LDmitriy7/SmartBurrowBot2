@@ -1,6 +1,9 @@
 import toml
 
-env = toml.load('env.toml')
+try:
+    env = toml.load('env.toml')
+except:
+    env = toml.load('../env.toml')
 
 
 class Database:

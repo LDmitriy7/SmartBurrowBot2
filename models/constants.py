@@ -6,3 +6,11 @@ class SendTo(Helper):
 
     CHANNEL = Item()
     WORKER = Item()
+
+
+class OrderStatus(Helper):
+    mode = HelperMode.lowercase
+
+    ACTIVE = Item()
+    IN_PROGRESS = Item()
+    COMPLETED = Item()

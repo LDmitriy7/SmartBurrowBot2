@@ -1,8 +1,10 @@
+from datetime import date
 from datetime import datetime
 
 import mongoengine as me
 
 import config
+from . import constants
 
 
 class Profile(me.EmbeddedDocument):
@@ -37,14 +39,16 @@ class File(me.EmbeddedDocument):
 
 
 class Order(me.Document):
+    status: str = me.StringField(default=constants.OrderStatus.ACTIVE)
+
     send_to: str = me.StringField()
     worker_id: int = me.IntField()
     require_approving: bool = me.BooleanField(default=False)
 
     work_type: str = me.StringField()
     subject: str = me.StringField()
-    date: str = me.DateField()
+    until_date: str = me.StringField()  # can't be date due to unknown error
     description: str = me.StringField()
     price: int = me.IntField()
     note: str = me.StringField()
-    files: list[File] = me.ListField(File)
+    files: list[File] = me.EmbeddedDocumentListField(File)

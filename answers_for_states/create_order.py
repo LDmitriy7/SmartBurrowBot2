@@ -2,9 +2,13 @@ from datetime import date
 
 from aiogram import types
 
+import api
 import keyboards as kb
+import models
 import texts
 from loader import bot
+from models import constants
+from utils import StorageProxy
 
 
 async def ask_work_type():
@@ -37,3 +41,25 @@ async def ask_price():
 async def ask_note():
     chat = types.Chat.get_current()
     await bot.send_message(chat.id, texts.ask_note, reply_markup=kb.MissBack())
+
+
+async def ask_files():
+    chat = types.Chat.get_current()
+    await bot.send_message(chat.id, texts.ask_files, reply_markup=kb.ReadyBack())
+
+
+async def show_preview():
+    chat = types.Chat.get_current()
+    order = await StorageProxy(models.Order).get_object()
+
+    if order.send_to == constants.SendTo.CHANNEL:
+        await bot.send_message(chat.id, texts.ask_to_confirm_order)
+    elif order.send_to == constants.SendTo.WORKER:
+        await bot.send_message(chat.id, texts.ask_to_confirm_personal_order)
+    else:
+        await bot.send_message(chat.id, texts.ask_to_save_personal_order)
+
+    post_text = api.get_order_post_text(order, with_note=True)
+    await bot.send_message(chat.id, post_text, reply_markup=None)
+    # await bot.send_message(chat.id, post_text, reply_markup=kb.ConfirmOrder())
+    # await funcs.send_files(post_data.files)
