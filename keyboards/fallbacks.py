@@ -43,3 +43,18 @@ class ReadyBack(ReplyKeyboardMarkup):
             self.READY, self.RESET,
             self.BACK, self.CANCEL,
         )
+
+
+class SaveBack(ReplyKeyboardMarkup):
+    SAVE = constants.Fallbacks.SAVE
+    RESET = constants.Fallbacks.RESET
+    BACK = constants.Fallbacks.BACK
+    CANCEL = constants.Fallbacks.CANCEL
+
+    def __init__(self):
+        super().__init__(resize_keyboard=True, row_width=2)
+
+        self.add(
+            self.SAVE, self.RESET,
+            self.BACK, self.CANCEL,
+        )

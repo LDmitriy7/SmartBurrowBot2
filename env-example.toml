@@ -18,3 +18,10 @@ admins_ids = [0]
 [Log]
 #file = '.log'
 #level = 30
+
+[ArticleUrls]
+about_project = 'https://telegra.ph/O-proekte-03-17'
+project_rules = 'https://telegra.ph/Pravila-proekta-09-14'
+client_menu_guide = 'https://telegra.ph/Kak-ispolzovat-Menyu-zakazchika-03-17'
+worker_menu_guide = 'https://telegra.ph/Kak-ispolzovat-Menyu-ispolnitelya-03-17'
+faq = 'https://telegra.ph/CHasto-zadavaemye-voprosy-03-17'

@@ -38,17 +38,17 @@ async def back(msg: types.Message, state: FSMContext):
 
             break
 
+
 # @dp.message_handler(button=[kb.BACK, kb.CANCEL], state=ChangeProfile)
 # async def go_back_in_worker_menu():
 #     on_conv_exit = QuestText('Отменено', kb.for_worker)
 #     return UpdateData(new_state='previous', on_conv_exit=on_conv_exit)
 
 
-# @dp.message_handler(button=kb.for_worker.BACK)
-# async def go_back_in_main_menu():
-#     on_conv_exit = QuestText('*Меню заказчика*:', kb.main)
-#     return UpdateData(new_state='previous', on_conv_exit=on_conv_exit)
-
+@dp.message_handler(button=kb.WorkerMenu.BACK)
+async def back_to_main_menu(msg: types.Message, state: FSMContext):
+    await state.finish()
+    await msg.answer('<b>Меню заказчика</b>:', reply_markup=kb.MainMenu())
 
 # @dp.callback_query_handler(text=kb.DEL_MESSAGE, state='*')
 # async def delete_msg(msg: types.Message):

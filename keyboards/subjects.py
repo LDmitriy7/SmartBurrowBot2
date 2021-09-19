@@ -31,13 +31,25 @@ class SubjectsInCategory(InlineKeyboardMarkup):
     NEXT_PAGE = InlineKeyboardButton('{text}', callback_data='subjects:next_page:{page_num}')
     BACK_TO_CATEGORIES = InlineKeyboardButton('Назад', callback_data='subjects:back_to_categories')
 
-    def __init__(self, category: str, page: int):
+    @staticmethod
+    def get_subjects_buttons(subjects: list[str], marked_subjects: list = ()) -> list[InlineKeyboardButton]:
+        buttons = []
+
+        for s in subjects:
+            button = InlineKeyboardButton(s, callback_data=s)
+            if s in set(marked_subjects):
+                button.text += ' ✅'
+            buttons.append(button)
+
+        return buttons
+
+    def __init__(self, category: str, page: int, marked_subjects: list = ()):
         super().__init__(row_width=1)
 
         sorted_category_subjects = sorted(SUBJECTS_BY_CATEGORY[category])
         subjects = list(paginate(sorted_category_subjects, page, limit=10))
 
-        subjects_buttons = [InlineKeyboardButton(s, callback_data=s) for s in subjects]
+        subjects_buttons = self.get_subjects_buttons(subjects, marked_subjects)
         self.add(*subjects_buttons)
 
         navigate_buttons = []

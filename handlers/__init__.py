@@ -5,7 +5,5 @@ def setup():
     from . import errors
 
     from . import search_subjects
-
-    from . import guide
-    from . import ref_program
-    from . import create_order
+    from . import menu
+    from . import registration

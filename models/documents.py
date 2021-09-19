@@ -14,6 +14,7 @@ class Profile(me.EmbeddedDocument):
     email: str = me.StringField()
     biography: str = me.StringField()
     deals_amount: int = me.IntField(default=0)
+    subjects: list[str] = me.ListField(me.StringField())
     works: list[str] = me.ListField(me.StringField())
 
 
@@ -21,7 +22,6 @@ class User(me.Document):
     user_id: int = me.IntField()
 
     balance: int = me.IntField(default=0)
-    subjects: list[str] = me.ListField(me.StringField())
     profile: Profile = me.EmbeddedDocumentField(Profile)
     page_url: str = me.StringField()
     card_num: str = me.StringField()

@@ -26,5 +26,5 @@ storage = MongoStorage(
 bot = Bot(config.Bot.TOKEN, parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot, storage=storage)
 
-arg_parser = argparse.ArgumentParser()
+arg_parser = argparse.ArgumentParser()  # TODO: remove?
 arg_parser.add_argument('-l', '--log-to-stdout', action='store_true')

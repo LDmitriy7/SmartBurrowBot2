@@ -5,7 +5,7 @@ import states
 from loader import dp
 
 
-@dp.inline_handler(state=[states.CreateOrder.subject])
+@dp.inline_handler(state=[states.CreateOrder.subject, states.Registration.subjects])
 async def show_fit_subjects(query: types.InlineQuery):
     fit_subjects = api.get_fit_subjects(query.query, limit=20)
     articles = []

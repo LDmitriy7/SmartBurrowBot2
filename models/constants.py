@@ -20,5 +20,6 @@ class Fallbacks(Helper):
     BACK = 'Назад'
     CANCEL = 'Отменить'
     READY = 'Готово'
+    SAVE = 'Сохранить'
     RESET = 'Сбросить'
     MISS = 'Пропустить'

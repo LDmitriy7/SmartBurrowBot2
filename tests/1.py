@@ -1,14 +1,4 @@
-from datetime import datetime
-import mongoengine as me
-import models
+from loader import dp
+import config
 
-me.connect()
-
-o = models.Order(
-    until_date=datetime.now().date()
-)
-
-o.until_date = datetime.now()
-o.save()
-
-print(o.until_date.__class__)
+print(dp, config.Users.OWNER_URL)
