@@ -1,11 +1,9 @@
 """Наборы всех обычных состояний бота."""
 from aiogram import types
 
-import config
-import api
 import keyboards as kb
-import texts
 import models
+import texts
 from loader import dp
 
 

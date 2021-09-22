@@ -7,7 +7,7 @@ import states
 import texts
 from config.stop_words import STOP_WORDS
 from loader import dp
-from utils import StorageProxy
+from aiogram_utils.storage_proxy import StorageProxy
 
 main_state = states.CreateOrder.description
 

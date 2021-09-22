@@ -7,7 +7,7 @@ import keyboards as kb
 import models
 import states
 from loader import dp
-from utils import StorageProxy
+from aiogram_utils.storage_proxy import StorageProxy
 
 main_state = states.CreateOrder.until_date
 

@@ -36,7 +36,7 @@ class Log:
     log = env['Log']
 
     FILE = log.get('file')
-    LEVEL = log.get('level', 30)
+    LEVEL = log.get('level')
 
 
 class ArticleUrls:

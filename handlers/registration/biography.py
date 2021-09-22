@@ -1,10 +1,10 @@
 from aiogram import types
+from aiogram_utils.storage_proxy import StorageProxy
 
 import api
 import models
 import states
 from loader import dp
-from utils import StorageProxy
 
 main_state = states.Registration.biography
 

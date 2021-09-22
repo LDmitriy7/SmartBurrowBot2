@@ -8,7 +8,7 @@ import states
 import texts
 from loader import dp
 from models.constants import SendTo
-from utils import StorageProxy
+from aiogram_utils.storage_proxy import StorageProxy
 
 
 @dp.message_handler(button=kb.MainMenu.CREATE_ORDER, state='*')

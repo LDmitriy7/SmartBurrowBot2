@@ -5,7 +5,7 @@ import keyboards as kb
 import models
 import states
 from loader import dp
-from utils import StorageProxy
+from aiogram_utils.storage_proxy import StorageProxy
 
 
 @dp.callback_query_handler(button=kb.WorkTypes.BUTTONS, state=states.CreateOrder.work_type)

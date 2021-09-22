@@ -7,7 +7,7 @@ import models
 import states
 from config.subjects import ALL_SUBJECTS
 from loader import dp
-from utils import StorageProxy
+from aiogram_utils.storage_proxy import StorageProxy
 
 main_state = states.Registration.subjects
 SUBJECTS_CATEGORY = 'subjects_category'

@@ -8,7 +8,7 @@ import models
 import texts
 from loader import bot
 from models import constants
-from utils import StorageProxy
+from aiogram_utils.storage_proxy import StorageProxy
 
 
 async def ask_work_type():
@@ -50,7 +50,7 @@ async def ask_files():
 
 async def show_preview():
     chat = types.Chat.get_current()
-    order = await StorageProxy(models.Order).get_object()
+    order = await StorageProxy(models.Order).get_document()
 
     if order.send_to == constants.SendTo.CHANNEL:
         await bot.send_message(chat.id, texts.ask_to_confirm_order)

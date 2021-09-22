@@ -2,7 +2,7 @@ from aiogram.types import InlineKeyboardMarkup
 from aiogram.utils.parts import paginate
 
 from config.subjects import SUBJECTS_BY_CATEGORY
-from utils.keyboards import InlineKeyboardButton
+from aiogram_utils.keyboards import InlineKeyboardButton
 
 
 class SubjectsSearch(InlineKeyboardMarkup):

@@ -10,7 +10,7 @@ import states
 import texts
 from loader import dp
 from models import constants
-from utils import StorageProxy
+from aiogram_utils.storage_proxy import StorageProxy
 
 main_state = states.CreateOrder.preview
 

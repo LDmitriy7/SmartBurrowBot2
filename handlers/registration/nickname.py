@@ -1,12 +1,12 @@
 from aiogram import types
 from aiogram.dispatcher import FSMContext
+from aiogram_utils.storage_proxy import StorageProxy
 
 import api
 import keyboards as kb
 import models
 import states
 from loader import dp
-from utils import StorageProxy
 
 main_state = states.Registration.nickname
 

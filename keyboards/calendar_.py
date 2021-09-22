@@ -4,7 +4,7 @@ from typing import Optional
 
 from aiogram.types import InlineKeyboardMarkup
 
-from utils.keyboards import InlineKeyboardButton
+from aiogram_utils.keyboards import InlineKeyboardButton
 
 DAYS_OF_WEEK = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС']
 MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',

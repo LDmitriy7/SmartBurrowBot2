@@ -1,7 +1,7 @@
 from aiogram.types import ReplyKeyboardMarkup
 
 from models import constants
-from utils.keyboards import KeyboardButton
+from aiogram_utils.keyboards import KeyboardButton
 
 
 class PhoneNumber(ReplyKeyboardMarkup):
