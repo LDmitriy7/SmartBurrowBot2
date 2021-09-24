@@ -53,3 +53,9 @@ class Order(me.Document):
     price: int = me.IntField()
     note: str = me.StringField()
     files: list[File] = me.EmbeddedDocumentListField(File)
+
+
+class Deposit(me.Document):
+    user_id: int = me.IntField()
+    amount: int = me.IntField()
+    credited: bool = me.BooleanField(default=False)

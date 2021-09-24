@@ -1,4 +1,3 @@
-"""Наборы всех обычных состояний бота."""
 from aiogram import types
 
 import keyboards as kb

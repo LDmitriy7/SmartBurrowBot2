@@ -1,4 +1,5 @@
 from .answer_for_state import *
+from .bot_url import *
 from .contacts import *
 from .dates import *
 from .nicknames import *

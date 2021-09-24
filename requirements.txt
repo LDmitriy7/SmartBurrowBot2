@@ -1,4 +1,4 @@
-aiogram==2.14.3
+aiogram~=2.15
 aiohttp==3.7.4.post0
 aniso8601==9.0.1
 async-timeout==3.0.1
@@ -57,3 +57,5 @@ Werkzeug==2.0.1
 yarl==1.6.3
 zope.event==4.5.0
 zope.interface==5.4.0
+
+cloudipsp~=1.0.3

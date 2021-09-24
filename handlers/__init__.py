@@ -7,3 +7,4 @@ def setup():
     from . import search_subjects
     from . import menu
     from . import registration
+    from . import tests
