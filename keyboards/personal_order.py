@@ -23,3 +23,15 @@ class PersonalOrderInvite(InlineKeyboardMarkup):
         super().__init__(row_width=1)
 
         self.add(self.CHOOSE_CHAT)
+
+
+class OrderInvite(InlineKeyboardMarkup):
+    FILL_ORDER = InlineKeyboardButton('Заполнить заказ',
+                                      url='https://t.me/{bot_username}?start=order-invite-from-{worker_id}')
+
+    def __init__(self, bot_username: str, worker_id: int):
+        super().__init__(row_width=1)
+
+        self.add(
+            self.FILL_ORDER.format(bot_username=bot_username, worker_id=worker_id)
+        )

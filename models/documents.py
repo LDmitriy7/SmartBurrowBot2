@@ -59,3 +59,10 @@ class Deposit(me.Document):
     user_id: int = me.IntField()
     amount: int = me.IntField()
     credited: bool = me.BooleanField(default=False)
+
+
+class Withdrawal(me.Document):
+    user_id: int = me.IntField()
+    amount: int = me.IntField()
+    card_num: str = me.StringField()
+    credited: bool = me.BooleanField(default=False)

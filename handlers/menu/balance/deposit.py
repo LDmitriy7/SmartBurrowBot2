@@ -1,5 +1,7 @@
 from aiogram import types
+from aiogram.dispatcher import FSMContext
 
+import api
 import keyboards as kb
 import models
 import states
@@ -8,13 +10,13 @@ from loader import dp, merchant
 
 
 @dp.callback_query_handler(button=kb.Balance.DEPOSIT)
-async def ask_deposit_amount(query: types.CallbackQuery):
-    await query.message.answer(texts.ask_deposit_amount, reply_markup=kb.CancelBack())
+async def ask_deposit_amount(_query: types.CallbackQuery):
     await states.Deposit.first()
+    await api.answer_for_state()
 
 
 @dp.message_handler(state=states.Deposit.amount)
-async def process_deposit_amount(msg: types.Message):
+async def process_deposit_amount(msg: types.Message, state: FSMContext):
     if not msg.text.isdigit():
         await msg.answer('Ошибка, введи только число')
         return
@@ -33,7 +35,7 @@ async def process_deposit_amount(msg: types.Message):
     invoice_url = await merchant.get_invoice_url(str(deposit.id), deposit.amount)
     await my_msg.edit_text(texts.ask_to_pay, reply_markup=kb.Deposit(invoice_url, str(deposit.id)))
 
-    await states.Deposit.next()
+    await state.finish()
     await msg.answer(texts.deposit_info, reply_markup=kb.MainMenu())
 
 

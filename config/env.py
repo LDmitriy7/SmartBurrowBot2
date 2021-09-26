@@ -26,10 +26,12 @@ class Bot:
 
 class Users:
     users = env['Users']
+    _OWNER_USERNAME = users['owner_username']
 
     ADMINS_IDS = users['admins_ids']
-    OWNER_USERNAME = users['owner_username']
-    OWNER_URL = users['owner_url']
+    OWNER_ID = users['owner_id']
+    OWNER_USERNAME = '@' + _OWNER_USERNAME
+    OWNER_URL = f'https://t.me/{_OWNER_USERNAME}'
 
 
 class Log:
@@ -47,3 +49,12 @@ class ArticleUrls:
     CLIENT_MENU_GUIDE = article_urls['client_menu_guide']
     WORKER_MENU_GUIDE = article_urls['worker_menu_guide']
     FAQ = article_urls['faq']
+
+
+class Channel:
+    _channel = env['Channel']
+    _USERNAME = _channel['username']
+
+    USERNAME = '@' + _USERNAME
+    URL = f'https://t.me/{_USERNAME}'
+    POST_URL = URL + '/{}'
