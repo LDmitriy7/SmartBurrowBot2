@@ -23,6 +23,12 @@ class Bot:
     SKIP_UPDATES = _data.get('skip_updates', False)
 
 
+class BrokerBot:
+    _data = _config['BrokerBot']
+
+    TOKEN = _data['token']
+
+
 class Users:
     _data = _config['Users']
 

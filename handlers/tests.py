@@ -50,3 +50,9 @@ async def test2(msg: types.Message):
 async def test3(msg: types.Message):
     await msg.answer(..., reply_markup=kb.SearchOrders(True))
     await msg.answer(..., reply_markup=kb.SearchOrders(False))
+
+
+@dp.message_handler(commands='test4', user_id=config.Users.DEVELOPERS_IDS)
+async def test4(msg: types.Message):
+    with dp.bot.with_token(config.BrokerBot.TOKEN):
+        await msg.answer('Hello, world')
