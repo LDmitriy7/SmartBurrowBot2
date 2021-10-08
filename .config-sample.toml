@@ -5,11 +5,11 @@ name = 'smart_burrow_bot'
 #host = 'localhost'
 #port = 27017
 #username = 'root'
-#password = 'abc123'
+#password = ''
 #auth_source = 'admin'
 
 [Bot]
-token = 'abc123'
+token = ''
 #skip_updates = true
 
 [Users]
