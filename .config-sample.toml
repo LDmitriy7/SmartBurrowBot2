@@ -1,0 +1,29 @@
+# you must create '.config.toml' accordingly this example
+
+[Database]
+name = 'smart_burrow_bot'
+#host = 'localhost'
+#port = 27017
+#username = 'root'
+#password = 'abc123'
+#auth_source = 'admin'
+
+[Bot]
+token = 'abc123'
+#skip_updates = true
+
+[Users]
+admins_ids = [724477101]
+owner_id = 724477101
+owner_username = '@ChiefMole'
+
+[Log]
+#file = '.log'
+#level = 20
+
+[Channel]
+username = '@SmartBurrowChannel'
+
+[Merchant]
+id = '1396424'
+secret_key = 'test'

@@ -1,8 +1,9 @@
 import mongoengine as me
 from aiogram import Bot, Dispatcher, types
 from aiogram.contrib.fsm_storage.mongo import MongoStorage
-from utils.merchant import Merchant
+
 import config
+from utils.merchant import Merchant
 
 me.connect(
     db=config.Database.NAME,
@@ -23,4 +24,4 @@ storage = MongoStorage(
 
 bot = Bot(config.Bot.TOKEN, parse_mode=types.ParseMode.HTML)
 dp = Dispatcher(bot, storage=storage)
-merchant = Merchant('1396424', 'test')
+merchant = Merchant(config.Merchant.ID, config.Merchant.SECRET_KEY)
