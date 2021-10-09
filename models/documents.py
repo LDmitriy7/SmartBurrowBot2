@@ -43,6 +43,7 @@ class Order(me.Document):
     status: str = me.StringField(default=constants.OrderStatus.ACTIVE)
 
     send_to: str = me.StringField()
+    client_id: int = me.IntField()
     worker_id: int = me.IntField()
     require_approving: bool = me.BooleanField(default=False)
 

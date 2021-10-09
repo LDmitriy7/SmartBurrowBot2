@@ -3,6 +3,7 @@ import inspect
 from aiogram import types
 
 import config
+import models
 from loader import dp
 import keyboards as kb
 
@@ -56,3 +57,11 @@ async def test3(msg: types.Message):
 async def test4(msg: types.Message):
     with dp.bot.with_token(config.BrokerBot.TOKEN):
         await msg.answer('Hello, world')
+
+
+@dp.message_handler(commands='test5', user_id=config.Users.DEVELOPERS_IDS, state='*')
+async def test4(msg: types.Message):
+    from .menu.create_order.preview import send_order_to_admin
+
+    order = models.Order.objects().first()
+    await send_order_to_admin(msg, order)

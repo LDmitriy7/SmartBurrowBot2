@@ -12,6 +12,9 @@ name = 'smart_burrow_bot'
 token = ''
 #skip_updates = true
 
+[BrokerBot]
+token = ''
+
 [Users]
 admins_ids = [724477101]
 owner_id = 724477101

@@ -51,7 +51,7 @@ async def send_order_invite_keyboard(query: types.CallbackQuery):
 async def show_order_invite_article(query: types.InlineQuery):
     me = await dp.bot.me
     text = 'Перейдите по ссылке, чтобы заполнить персональный проект'
-    keyboard = kb.OrderInvite(me.username, query.from_user.id)
+    keyboard = kb.FillPersonalOrder(me.username, query.from_user.id)
     imc = types.InputMessageContent(message_text=text)
 
     article = types.InlineQueryResultArticle(
@@ -65,7 +65,7 @@ async def show_order_invite_article(query: types.InlineQuery):
     await query.answer([article], cache_time=0, is_personal=True)
 
 
-@dp.message_handler(button=kb.OrderInvite.FILL_ORDER, state='*')
+@dp.message_handler(button=kb.FillPersonalOrder.FILL_ORDER, state='*')
 async def entry_personal_project_with_worker(msg: types.Message, button: dict):
     worker_id = int(button['worker_id'])
 

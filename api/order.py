@@ -15,10 +15,10 @@ async def send_file(chat_id: int, file: models.File):
         raise ValueError('Unknown file type')
 
 
-async def send_order_files(files: list[models.File], title='<b>Файлы к заказу:</b>'):
-    chat = types.Chat.get_current()
+async def send_order_files(files: list[models.File], title='<b>Файлы к заказу:</b>', *, chat_id: int = None):
+    chat_id = chat_id or types.Chat.get_current().id
 
     if files:
-        await bot.send_message(chat.id, title)
+        await bot.send_message(chat_id, title)
         for f in files:
-            await send_file(chat.id, f)
+            await send_file(chat_id, f)

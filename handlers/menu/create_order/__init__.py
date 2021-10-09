@@ -6,3 +6,4 @@ from . import note
 from . import price
 from . import subject
 from . import work_type
+from . import preview

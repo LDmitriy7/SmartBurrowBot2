@@ -10,3 +10,4 @@ from .send_order import *
 from .subjects import *
 from .work_types import *
 from .worker_menu import *
+from .moderate_order import *
